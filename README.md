@@ -1,4 +1,4 @@
-# RESTFulApi
+# RESTFulApi - Clean Architecture
 
 A professional RESTful API built with ASP.NET Core 8 following Clean Architecture, SOLID principles, Repository & Unit of Work patterns, and FluentValidation. The API manages Categories and Products with full CRUD functionality.
 
@@ -124,20 +124,20 @@ This will create `Categories` and `Products` tables with all necessary fields.
 ### Categories
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET    | /api/Category        | Get all categories |
-| GET    | /api/Category/{id}   | Get category by ID |
-| POST   | /api/Category        | Create category |
-| PUT    | /api/Category/{id}   | Update category |
-| DELETE | /api/Category/{id}   | Delete category |
+| GET    | /api/Category/GetAllCategories        | Get all categories |
+| GET    | /api/Category/GetCategoryById/{id}   | Get category by ID |
+| POST   | /api/Category/CreateCategory        | Create category |
+| PUT    | /api/Category/UpdateCategory/{id}   | Update category |
+| DELETE | /api/Category/DeleteCategory/{id}   | Delete category |
 
 ### Products
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET    | /api/Product        | Get all products |
-| GET    | /api/Product/{id}   | Get product by ID |
-| POST   | /api/Product        | Create product |
-| PUT    | /api/Product/{id}   | Update product |
-| DELETE | /api/Product/{id}   | Delete product |
+| GET    | /api/Product/GetAllProducts        | Get all products |
+| GET    | /api/Product/GetProductById/{id}   | Get product by ID |
+| POST   | /api/Product/CreateProduct        | Create product |
+| PUT    | /api/Product/UpdateProduct/{id}   | Update product |
+| DELETE | /api/Product/DeleteProduct/{id}   | Delete product |
 
 ## Validation
 - All create/update requests are validated using **FluentValidation**.  
