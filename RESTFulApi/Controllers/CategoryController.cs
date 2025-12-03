@@ -5,7 +5,7 @@ using RESTFulApi.Application.DTOs.Categories;
 
 namespace RESTFulApi.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CategoryController : ControllerBase
     {
@@ -18,7 +18,7 @@ namespace RESTFulApi.Controllers
 
         // GET: api/Category
         [HttpGet]
-        public async Task<IActionResult> GetAllCategories()
+        public async Task<IActionResult> Get()
         {
             var categories = await _categoryService.GetAllAsync();
             return Ok(categories);
@@ -26,7 +26,7 @@ namespace RESTFulApi.Controllers
 
         // GET: api/Category/{id}
         [HttpGet("{id:guid}")]
-        public async Task<IActionResult> GetCategoryById(Guid id)
+        public async Task<IActionResult> GetById(Guid id)
         {
             var category = await _categoryService.GetByIdAsync(id);
             if (category == null) return NotFound();
@@ -35,16 +35,16 @@ namespace RESTFulApi.Controllers
 
         // POST: api/Category
         [HttpPost]
-        public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryRequest request)
+        public async Task<IActionResult> Create([FromBody] CreateCategoryRequest request)
         {
             // FluentValidation will automatically validate
             var category = await _categoryService.CreateAsync(request);
-            return CreatedAtAction(nameof(GetCategoryById), new { id = category.Id }, category);
+            return CreatedAtAction(nameof(GetById), new { id = category.Id }, category);
         }
 
         // PUT: api/Category/{id}
         [HttpPut("{id:guid}")]
-        public async Task<IActionResult> UpdateCategory(Guid id, [FromBody] UpdateCategoryRequest request)
+        public async Task<IActionResult> Update(Guid id, [FromBody] UpdateCategoryRequest request)
         {
             var updatedCategory = await _categoryService.UpdateAsync(id, request);
             if (updatedCategory == null) return NotFound();
@@ -53,7 +53,7 @@ namespace RESTFulApi.Controllers
 
         // DELETE: api/Category/{id}
         [HttpDelete("{id:guid}")]
-        public async Task<IActionResult> DeleteCategory(Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             var result = await _categoryService.DeleteAsync(id);
             if (!result) return NotFound();

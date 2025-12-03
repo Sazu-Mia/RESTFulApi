@@ -5,7 +5,7 @@ using RESTFulApi.Application.DTOs.Products;
 
 namespace RESTFulApi.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -18,7 +18,7 @@ namespace RESTFulApi.Controllers
 
         // GET: api/Product
         [HttpGet]
-        public async Task<IActionResult> GetAllProducts()
+        public async Task<IActionResult> Get()
         {
             var products = await _productService.GetAllAsync();
             return Ok(products);
@@ -26,7 +26,7 @@ namespace RESTFulApi.Controllers
 
         // GET: api/Product/{id}
         [HttpGet("{id:guid}")]
-        public async Task<IActionResult> GetProductById(Guid id)
+        public async Task<IActionResult> GetById(Guid id)
         {
             var product = await _productService.GetByIdAsync(id);
             if (product == null) return NotFound();
@@ -35,16 +35,16 @@ namespace RESTFulApi.Controllers
 
         // POST: api/Product
         [HttpPost]
-        public async Task<IActionResult> CreateProduct([FromBody] CreateProductRequest request)
+        public async Task<IActionResult> Create([FromBody] CreateProductRequest request)
         {
             // FluentValidation will automatically validate
             var product = await _productService.CreateAsync(request);
-            return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, product);
+            return CreatedAtAction(nameof(GetById), new { id = product.Id }, product);
         }
 
         // PUT: api/Product/{id}
         [HttpPut("{id:guid}")]
-        public async Task<IActionResult> UpdateProduct(Guid id, [FromBody] UpdateProductRequest request)
+        public async Task<IActionResult> Update(Guid id, [FromBody] UpdateProductRequest request)
         {
             var updatedProduct = await _productService.UpdateAsync(id, request);
             if (updatedProduct == null) return NotFound();
@@ -53,7 +53,7 @@ namespace RESTFulApi.Controllers
 
         // DELETE: api/Product/{id}
         [HttpDelete("{id:guid}")]
-        public async Task<IActionResult> DeleteProduct(Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             var result = await _productService.DeleteAsync(id);
             if (!result) return NotFound();
