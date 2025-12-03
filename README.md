@@ -124,20 +124,20 @@ This will create `Categories` and `Products` tables with all necessary fields.
 ### Categories
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET    | /api/Category/GetAllCategories        | Get all categories |
-| GET    | /api/Category/GetCategoryById/{id}   | Get category by ID |
-| POST   | /api/Category/CreateCategory        | Create category |
-| PUT    | /api/Category/UpdateCategory/{id}   | Update category |
-| DELETE | /api/Category/DeleteCategory/{id}   | Delete category |
+| GET    | /api/Category/GetAll        | Get all categories |
+| GET    | /api/Category/GetById/{id}   | Get category by ID |
+| POST   | /api/Category/Create        | Create category |
+| PUT    | /api/Category/Update/{id}   | Update category |
+| DELETE | /api/Category/Delete/{id}   | Delete category |
 
 ### Products
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET    | /api/Product/GetAllProducts        | Get all products |
-| GET    | /api/Product/GetProductById/{id}   | Get product by ID |
-| POST   | /api/Product/CreateProduct        | Create product |
-| PUT    | /api/Product/UpdateProduct/{id}   | Update product |
-| DELETE | /api/Product/DeleteProduct/{id}   | Delete product |
+| GET    | /api/Product/Get        | Get all products |
+| GET    | /api/Product/GetById/{id}   | Get product by ID |
+| POST   | /api/Product/Create        | Create product |
+| PUT    | /api/Product/Update/{id}   | Update product |
+| DELETE | /api/Product/Delete/{id}   | Delete product |
 
 ## Validation
 - All create/update requests are validated using **FluentValidation**.  
